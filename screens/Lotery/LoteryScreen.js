@@ -10,117 +10,119 @@ import {
   View,
 } from 'react-native';
 
+import LoteryDetailsComponent from './LoteryDetailsComponent';
+import cl from '../../constants/Colors';
+import LoteryNav from '../../navigation/LoteryNav';
+
 export default class LoteryScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      LoteryItem: {
+        position: 'Miền Bắc',
+        date: '19-11-2019',
+        win: [
+          {
+            name: 'ĐB',
+            number: '19942'
+          },
+          {
+            name: '1',
+            number: '50640'
+          },
+          {
+            name: '2',
+            number: '30233-16299'
+          },
+          {
+            name: '3',
+            number: '75147-88083-16886-87684-73604-16466'
+          },
+          {
+            name: '4',
+            number: '3898-0381-1744-4280'
+          },
+          {
+            name: '5',
+            number: '5527-1669-5640-6218-1409-1739'
+          },
+          {
+            name: '6',
+            number: '158-558-731'
+          },
+          {
+            name: '7',
+            number: '51-98-64-63'
+          },
+        ],
+        first: [
+          {
+            name: 0,
+            number: '04,09',
+          },
+          {
+            name: 1,
+            number: '18',
+          },
+          {
+            name: 2,
+            number: '27',
+          },
+          {
+            name: 3,
+            number: '33,39,31',
+          },
+          {
+            name: 4,
+            number: '42,40,47,44,40',
+          },
+          {
+            name: 5,
+            number: '58,58,51',
+          },
+          {
+            name: 6,
+            number: '66,69,64,63',
+          },
+          {
+            name: 7,
+            number: '',
+          },
+          {
+            name: 8,
+            number: '83,86,84,81,80',
+          },
+          {
+            name: 9,
+            number: '99,98,98',
+          },
+
+        ]
+      }
+    }
+  }
 
   // return header 
   static navigationOptions = ({ navigation }) => {
     return {
-
       header: (
-       <View>
-         <Text style={{fontSize:60}}>Lotery demo  </Text>
-       </View>
+        <LoteryNav />
       )
     }
   }
+
+
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          <Text>Lotery code here test </Text>
+      <View style={{ backgroundColor: cl.ColorBlack,flex: 1,  }}>
+        <ScrollView >
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ textAlign: "center", color: cl.Colorwhite }}>{this.state.LoteryItem.date}</Text>
+          </View>
+          <LoteryDetailsComponent data={this.state.LoteryItem} />
         </ScrollView>
-
-
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
-});
