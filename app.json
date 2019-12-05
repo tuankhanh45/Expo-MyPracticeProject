@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "lotery",
-    "slug": "loterywinter",
+    "name": "lottery",
+    "slug": "lottery_winter",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/feed.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",

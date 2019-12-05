@@ -10,15 +10,15 @@ import {
   View,
 } from 'react-native';
 
-import LoteryDetailsComponent from './LoteryDetailsComponent';
+import LotteryDetailsComponent from './LotteryDetailsComponent';
 import cl from '../../constants/Colors';
-import LoteryNav from '../../navigation/LoteryNav';
+import LotteryNav from '../../navigation/LotteryNav';
 
-export default class LoteryScreen extends React.Component {
+export default class LotteryScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      LoteryItem: {
+      LotteryItem: {
         position: 'Miền Bắc',
         date: '19-11-2019',
         win: [
@@ -106,7 +106,7 @@ export default class LoteryScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       header: (
-        <LoteryNav />
+        <LotteryNav />
       )
     }
   }
@@ -114,12 +114,12 @@ export default class LoteryScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: cl.ColorBlack,flex: 1,  }}>
+      <View style={{ backgroundColor: "#000",flex: 1,  }}>
         <ScrollView >
           <View style={{ marginTop: 20 }}>
-            <Text style={{ textAlign: "center", color: cl.Colorwhite }}>{this.state.LoteryItem.date}</Text>
+            <Text style={{ textAlign: "center", color: 'red' }}>{this.state.LotteryItem.date}</Text>
           </View>
-          <LoteryDetailsComponent data={this.state.LoteryItem} />
+          <LotteryDetailsComponent data={this.state.LotteryItem} />
         </ScrollView>
       </View>
     );

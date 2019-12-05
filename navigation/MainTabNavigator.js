@@ -1,9 +1,9 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import LoteryScreen from '../screens/Lotery/LoteryScreen';
+import LotteryScreen from '../screens/Lottery/LotteryScreen';
 import SoccerScreen from '../screens/Soccer/SoccerScreen';
 import SettingsScreen from '../screens/Settings/SettingsScreen';
 
@@ -12,28 +12,24 @@ const config = Platform.select({
   default: {},
 });
 
-const LoteryStack = createStackNavigator(
+const LotteryStack = createStackNavigator(
   {
-    Lotey: LoteryScreen,
+    Lottery: LotteryScreen,
   },
   config
 );
 
-LoteryStack.navigationOptions = {
-  tabBarLabel: 'Lotery',
+LotteryStack.navigationOptions = {
+  tabBarLabel: 'Lottery',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'? 'ios-card':'md-card'
-          // ? `ios-information-circle${focused ? '' : '-outline'}`
-          // : 'md-information-circle'
-      }
+    <Image
+      source={require('../assets/images/icon_send.png')}
+      style={{ marginBottom: -3, height: 26, width: 26, tintColor: focused ? '#ffc266' : '#fff' }}
     />
   ),
 };
 
-LoteryStack.path = '';
+LotteryStack.path = '';
 
 const SoccerStack = createStackNavigator(
   {
@@ -43,7 +39,7 @@ const SoccerStack = createStackNavigator(
 );
 
 SoccerStack.navigationOptions = {
-  tabBarLabel: 'Soccer',
+  tabBarLabel: 'Mixed Screens',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-football' : 'md-football'} />
   ),
@@ -67,11 +63,30 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
-  LoteryStack,
-  SoccerStack,
-  SettingsStack,
-});
+const tabNavigator = createBottomTabNavigator(
+  {
+    LotteryStack,
+    SoccerStack,
+    SettingsStack,
+  },
+  {
+    tabBarOptions: {
+      style: { backgroundColor: 'black' },
+      activeTintColor: '#ffc266',
+      inactiveTintColor: '#fff',
+      labelStyle: {
+        fontWeight: "bold",
+      }
+    },
+    animationEnabled: false,
+    swipeEnabled: false,
+    headerMode: 'none',
+    mode: 'modal',
+    cardStyle: {
+      opacity: 1,
+    },
+  }
+);
 
 tabNavigator.path = '';
 
