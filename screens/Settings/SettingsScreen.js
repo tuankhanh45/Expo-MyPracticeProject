@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Image, View, Text, TouchableOpacity, } from 'react-native';
-import { Badge, Icon, withBadge } from 'react-native-elements'
+import { Badge, Slider, CheckBox, Button, Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
 
-export default class SettingsScreen extends Component {
+import { UPDATE_TIME_REFRESH, UPDATE_NOTIFY_SETTINGS } from "../../redux/actions/notifyAction"
+class SettingsScreen extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,7 +12,7 @@ export default class SettingsScreen extends Component {
     return {
       header: (
         <View
-          style={{ flexDirection: "row", justifyContent: "space-between", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "gray", borderBottomWidth: 0.2, marginTop: 20,alignItems:"center" }}>
+          style={{ flexDirection: "row", justifyContent: "space-between", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "#000", borderBottomWidth: 0.2, marginTop: 20, alignItems: "center" }}>
           <Text style={{ flex: 8, textAlign: "center", fontSize: 30, color: "white" }}> Settings </Text>
 
           <TouchableOpacity>
@@ -22,7 +24,6 @@ export default class SettingsScreen extends Component {
                 value={5}
                 containerStyle={{ position: 'absolute', top: -2, right: -2 }}
               />
-
             </View>
           </TouchableOpacity>
         </View>
@@ -32,10 +33,81 @@ export default class SettingsScreen extends Component {
 
   render() {
     return (
-      <View style={{}}>
+      <View style={{ backgroundColor: "#404040", flex: 1 }}>
+        <View style={{ padding: 10, margin: 10, backgroundColor: "#2c2c2c", borderRadius: 10 }}>
+          <Text style={{ color: "#fff", fontSize: 18, textTransform: "uppercase", textAlign: "center" }}> Thiết lập chung </Text>
+
+          <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}>
+            <Text style={{ color: "#fff", fontSize: 18, marginRight: 20 }}>Xóa bộ nhớ</Text>
+            <View style={{ flex: 6, justifyContent: "center", alignItems: "center" }}>
+              <Button
+                title="Xóa bộ nhớ" />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}>
+            <Text style={{ color: "#fff", fontSize: 18, marginRight: 20, flex: 4 }}>Cập nhật {this.props.setting.refreshTime} s</Text>
+            <View style={{ flex: 6 }}>
+              <Slider
+                value={this.props.setting.refreshTime}
+                minimumValue={10}
+                maximumValue={60}
+                step={5}
+                thumbTouchSize={{ width: 10, height: 10 }}
+                thumbTintColor={"orange"}
+                onValueChange={(val)=> this.props.UPDATE_TIME_REFRESH(val)}
+              />
+            </View>
+
+          </View>
+        </View>
+
+        <View style={{ padding: 10, margin: 10, backgroundColor: "#2c2c2c", borderRadius: 10 }}>
+          <Text style={{ color: "#fff", fontSize: 18, textTransform: "uppercase", textAlign: "center" }}> Thiết lập thông báo </Text>
+
+          <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}>
+            <Text style={{ color: "#fff", fontSize: 18, marginRight: 20, flex: 3 }}>Gửi tin nhắn</Text>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <CheckBox
+                checked={this.props.setting.notifyMessage}
+                checkedColor={"green"}
+                onPress={()=> this.props.UPDATE_NOTIFY_SETTINGS(0)}
+              />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}>
+            <Text style={{ color: "#fff", fontSize: 18, marginRight: 20, flex: 3 }}>Âm thanh</Text>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <CheckBox
+                checked={this.props.setting.notifySound}
+                checkedColor={"green"}
+                onPress={()=> this.props.UPDATE_NOTIFY_SETTINGS(1)}
+              />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", marginTop: 10, alignItems: "center" }}>
+            <Text style={{ color: "#fff", fontSize: 18, marginRight: 20, flex: 3 }}>Rung</Text>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <CheckBox
+                checked={this.props.setting.notifyVibrate}
+                checkedColor={"green"}
+                onPress={()=> this.props.UPDATE_NOTIFY_SETTINGS(2)}
+              />
+            </View>
+          </View>
+
+        </View>
       </View>
     )
 
   }
 }
+
+export default connect(state => ({
+  setting: state.setting,
+}),
+  { UPDATE_TIME_REFRESH, UPDATE_NOTIFY_SETTINGS },
+)(SettingsScreen)
 
