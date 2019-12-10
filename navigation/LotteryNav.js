@@ -9,7 +9,7 @@ export default class LotteryNav extends Component {
     render() {
         return (
             <View 
-            style={{ flexDirection: 'row', paddingLeft: 10, marginTop: 20,backgroundColor:'black',borderBottomColor: 'gray',borderBottomWidth: 0.2, }}>
+            style={{ flexDirection: 'row', paddingLeft: 10, paddingTop: 20,backgroundColor:'black',borderBottomColor: 'gray',borderBottomWidth: 0.2, }}>
                 <TouchableOpacity style={{ flex: 1, justifyContent: "center" }}>
                     <Image
                         style={{ height: 30, width: 30, }}

@@ -49,7 +49,7 @@ export default class SoccerScreen extends Component {
     return {
       header: (
         <View
-          style={{ flexDirection: "row", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "gray", borderBottomWidth: 0.2, marginTop: 20 }}>
+          style={{ flexDirection: "row", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "gray", borderBottomWidth: 0.2, paddingTop: 20 }}>
           <Text style={{ flex: 8, textAlign: "center", fontSize: 30, color: "white" }}>Football Match </Text>
         </View>
       )

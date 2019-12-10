@@ -12,7 +12,7 @@ class SettingsScreen extends Component {
     return {
       header: (
         <View
-          style={{ flexDirection: "row", justifyContent: "space-between", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "#000", borderBottomWidth: 0.2, marginTop: 20, alignItems: "center" }}>
+          style={{ flexDirection: "row", justifyContent: "space-between", paddingLeft: 10, backgroundColor: "black", borderBottomColor: "#000", borderBottomWidth: 0.2,  alignItems: "center",paddingTop:20 }}>
           <Text style={{ flex: 8, textAlign: "center", fontSize: 30, color: "white" }}> Settings </Text>
 
           <TouchableOpacity>
@@ -53,7 +53,6 @@ class SettingsScreen extends Component {
                 minimumValue={10}
                 maximumValue={60}
                 step={5}
-                thumbTouchSize={{ width: 10, height: 10 }}
                 thumbTintColor={"orange"}
                 onValueChange={(val)=> this.props.UPDATE_TIME_REFRESH(val)}
               />
