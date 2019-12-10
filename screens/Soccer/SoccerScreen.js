@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { View, Text, TouchableHighlight, Image, Dimensions, FlatList, Modal, TouchableOpacity } from "react-native";
+import { Badge, Slider, CheckBox, Button, Icon } from "react-native-elements";
 
 import ShoppingCart from "./ShoppingCart"
 const Size = {
-  height: Dimensions.get('window').height,
-  width: Dimensions.get('window').width
+  height: Dimensions.get("window").height,
+  width: Dimensions.get("window").width
 }
 export default class SoccerScreen extends Component {
   constructor(props) {
@@ -159,19 +160,19 @@ export default class SoccerScreen extends Component {
             </View>
           }
         />
-        <View style={{ marginTop: 22, alignItems: "center", justifyContent: 'center' }}>
+        <View style={{ marginTop: 22, alignItems: "center", justifyContent: "center" }}>
           <Modal
             animationType="slide"
             transparent={false}
             visible={this.state.modalVisible}
             onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
+              Alert.alert("Modal has been closed.");
             }}>
 
             <View
               style={{ width: Size.width, height: Size.height, backgroundColor: "#000", padding: 20 }}>
 
-              <View style={{ flexDirection: "row", height: 40, borderBottomColor: "gray", borderBottomWidth: 0.5, alignItems: 'center' }}>
+              <View style={{ flexDirection: "row", height: 40, borderBottomColor: "gray", borderBottomWidth: 0.5, alignItems: "center" }}>
                 <TouchableOpacity
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
@@ -190,13 +191,20 @@ export default class SoccerScreen extends Component {
           </Modal>
 
           <TouchableHighlight
-            style={{ width: 100, height: 40, backgroundColor: 'black', borderRadius: 5, alignItems: "center", justifyContent: "center" }}
+            style={{ width: 100, height: 40, backgroundColor: "black", borderRadius: 5, alignItems: "center", justifyContent: "center" }}
             onPress={() => {
               this.setModalVisible(true);
             }}>
             <Text style={{ color: "white" }}>Show Modal</Text>
           </TouchableHighlight>
         </View>
+
+        {/* go to new screen */}
+        <Button
+          buttonStyle={{ marginTop: 20 }}
+          title="Go to shopping cart screen"
+          onPress={() => this.props.navigation.navigate("Shopping", data = { back: true, title: "go to from soccer screen to shopping screen" })}
+        />
       </View>
     );
   }

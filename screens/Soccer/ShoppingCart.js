@@ -1,13 +1,21 @@
 import React, { Component } from "react";
-import { View, Image, Text, TouchableOpacity, Dimensions } from "react-native"
+import { View, Image, Text, TouchableOpacity, Dimensions } from "react-native";
+
+import { Button } from "react-native-elements";
 const Size = {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width
 }
 
 export default class ShoppingCart extends Component {
     constructor(props) {
         super(props);
+    }
+
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: null
+        }
     }
     render() {
         return (
@@ -54,6 +62,15 @@ export default class ShoppingCart extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+
+                {(typeof this.props.navigation != 'undefined') && (this.props.navigation.state.params.back) &&
+                    <View>
+                        <Button
+                            title=" go back to soccer screen"
+                            onPress={() => this.props.navigation.goBack()}
+                        />
+                    </View>
+                }
             </View>
         )
     }

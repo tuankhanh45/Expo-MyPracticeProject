@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Image, View, Text, TouchableOpacity, } from 'react-native';
-import { Badge, Slider, CheckBox, Button, Icon } from 'react-native-elements';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Image, View, Text, TouchableOpacity, } from "react-native";
+import { Badge, Slider, CheckBox, Button, Icon } from "react-native-elements";
+import { connect } from "react-redux";
 
 import { UPDATE_TIME_REFRESH, UPDATE_NOTIFY_SETTINGS } from "../../redux/actions/notifyAction"
 class SettingsScreen extends Component {
@@ -22,7 +22,7 @@ class SettingsScreen extends Component {
               </Image>
               <Badge
                 value={5}
-                containerStyle={{ position: 'absolute', top: -2, right: -2 }}
+                containerStyle={{ position: "absolute", top: -2, right: -2 }}
               />
             </View>
           </TouchableOpacity>
