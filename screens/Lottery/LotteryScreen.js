@@ -1,14 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image,Platform,ScrollView,StyleSheet,Text,TouchableOpacity,View,} from 'react-native';
+
 
 import LotteryDetailsComponent from './LotteryDetailsComponent';
 import cl from '../../constants/Colors';
@@ -106,7 +99,7 @@ export default class LotteryScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       header: (
-        <LotteryNav />
+        <LotteryNav navigation={navigation}  />
       )
     }
   }
