@@ -1,11 +1,11 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
-import {Image,Platform,ScrollView,StyleSheet,Text,TouchableOpacity,View,} from 'react-native';
-
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 
 import LotteryDetailsComponent from './LotteryDetailsComponent';
 import cl from '../../constants/Colors';
 import LotteryNav from '../../navigation/LotteryNav';
+import FakeHomeScreen from '../FakeViews/FakeHomeScreen';
 
 export default class LotteryScreen extends Component {
   constructor(props) {
@@ -91,31 +91,40 @@ export default class LotteryScreen extends Component {
           },
 
         ]
-      }
+      },
+      showData: false
+
     }
   }
 
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState({ showData: !this.state.showData })
+    }, 13000);
+  }
   // return header 
   static navigationOptions = ({ navigation }) => {
     return {
       header: (
-        <LotteryNav navigation={navigation}  />
+        <LotteryNav navigation={navigation} />
       )
     }
   }
 
 
   render() {
-    return (
-      <View style={{ backgroundColor: "#000",flex: 1,  }}>
-        <ScrollView >
-          <View style={{ marginTop: 20 }}>
-            <Text style={{ textAlign: "center", color: 'red' }}>{this.state.LotteryItem.date}</Text>
-          </View>
-          <LotteryDetailsComponent data={this.state.LotteryItem} />
-        </ScrollView>
-      </View>
-    );
+    if (this.state.showData)
+      return (
+        <View style={{ backgroundColor: "#000", flex: 1 }}>
+          <ScrollView >
+            <View style={{ marginTop: 20 }}>
+              <Text style={{ textAlign: "center", color: 'red' }}>{this.state.LotteryItem.date}</Text>
+            </View>
+            <LotteryDetailsComponent data={this.state.LotteryItem} />
+          </ScrollView>
+        </View>
+      );
+      else return(<FakeHomeScreen /> )
   }
 }
 
