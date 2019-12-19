@@ -12,7 +12,7 @@ export default class SoccerScreen extends Component {
     super(props);
     this.state = {
       loading: false,
-      data: [
+      datalist: [
         {
           name: "list1"
         },
@@ -152,7 +152,7 @@ export default class SoccerScreen extends Component {
         <FlatList
           showsHorizontalScrollIndicator={false}
           horizontal={true}
-          data={this.state.data}
+          data={this.state.datalist}
           keyExtractor={(item, index) => index.toString()}
           renderItem={(data) =>
             <View style={{ height: 40, width: 100, borderColor: "gray", borderWidth: 1, margin: 5, alignItems: "center", justifyContent: "center" }}>
@@ -205,6 +205,8 @@ export default class SoccerScreen extends Component {
           title="Go to shopping cart screen"
           onPress={() => this.props.navigation.navigate("Shopping", data = { back: true, title: "go to from soccer screen to shopping screen" })}
         />
+
+        
       </View>
     );
   }

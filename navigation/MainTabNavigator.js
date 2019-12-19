@@ -26,7 +26,7 @@ LotteryStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <Image
       source={require("../assets/images/icon_send.png")}
-      style={{ marginBottom: -3, height: 26, width: 26, tintColor: focused ? "#ffc266" : "#fff" }}
+      style={{ marginBottom: -3, height: 40, width: 40, tintColor: focused ? "#ffc266" : "#fff" }}
     />
   ),
 };
